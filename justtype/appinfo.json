@@ -3,6 +3,7 @@
   "type": "web",
   "main": "index.html",
   "id": "com.palmdts.devday.justtype",
+  "noWindow": true,
   "version": "0.0.1",
   "vendor": "Palm, Inc.",
   "copyright": "&copy; Copyright 2010 Palm, Inc."
