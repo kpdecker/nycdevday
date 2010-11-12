@@ -14,4 +14,16 @@ StatusAssistant.prototype = {
     pushOtherScene: function() {
         this.controller.stageController.pushScene("other");
     },
+
+    populateStatus: function(status) {
+        // Pop any scenes above us off the stack
+        if (this.controller.stageController.topScene() !== this.controller) {
+            this.controller.stageController.popScenesTo(this.controller.sceneName);
+        }
+
+        this.displayStatus(status);
+    },
+    displayStatus: function(status) {
+        this.controller.get("status-section").textContent = status;
+    }
 };
