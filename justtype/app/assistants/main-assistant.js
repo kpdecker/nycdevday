@@ -23,6 +23,8 @@ MainAssistant.prototype = {
     },
 
     populateStatus: function(status) {
+        Mojo.Log.info("MainAssistant.populateStatus: %j", status);
+
         // This is a point that we could cleanup any UIs that may conflict with this action.
         // Examples: the navigation menu in the Facebook application
 

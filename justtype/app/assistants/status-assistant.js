@@ -24,6 +24,8 @@ StatusAssistant.prototype = {
     },
 
     populateStatus: function(status) {
+        Mojo.Log.info("StatusAssistant.populateStatus: %j", status);
+
         // Pop any scenes above us off the stack
         if (this.controller.stageController.topScene() !== this.controller) {
             this.controller.stageController.popScenesTo(this.controller.sceneName);
