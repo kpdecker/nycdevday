@@ -12,6 +12,7 @@ MainAssistant.prototype = {
         this.controller.listen("push-other-scene", Mojo.Event.tap, this.pushOtherSceneHandler);
     },
     cleanup: function() {
+        this.controller.stopListening("push-status-scene", Mojo.Event.tap, this.pushStatusSceneHandler);
         this.controller.stopListening("push-other-scene", Mojo.Event.tap, this.pushOtherSceneHandler);
     },
 
