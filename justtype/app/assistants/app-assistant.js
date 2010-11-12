@@ -21,6 +21,11 @@ AppAssistant.prototype = {
             var controller = this.controller.getStageController("main");
             controller && controller.activate();
         }
+
+        // If we were passed the cross app API parameter to the main stage
+        if (params.status) {
+            this.delegateToSupportingScene("main", "populateStatus", params.status);
+        }
     },
 
     /**
