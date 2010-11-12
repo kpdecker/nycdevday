@@ -23,6 +23,10 @@ AppAssistant.prototype = {
         }
     },
 
+    /**
+     * Delegation utility. Calls the first scene assistant who has an instance of delegateName.
+     * If the stage is still proxied calls proxy.delegateToSceneAssistant.
+     */
     delegateToSupportingScene: function(stageName, delegateName, params) {
         var controller = this.controller.getStageController(stageName),
             proxy = this.controller.getStageProxy(stageName);
