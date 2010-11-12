@@ -1,4 +1,5 @@
 [
     {"source": "app/assistants/app-assistant.js"},
     {"source": "app/assistants/main-assistant.js", "scenes": "main"},
+    {"source": "app/assistants/dock-assistant.js", "scenes": "dock"},
 ]

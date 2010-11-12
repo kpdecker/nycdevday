@@ -4,8 +4,12 @@ AppAssistant.prototype = {
     handleLaunch: function(params){
         Mojo.Log.info("handleLaunch: %j", params);
 
-        // Create the main scene if we do not already have one
-        this.createOrActivateStage("main", "main", Mojo.Controller.StageType.card);
+        if (params.dockMode) {
+            this.createOrActivateStage("dock", "dock", Mojo.Controller.StageType.dockMode);
+        } else {
+            // Create the main scene if we do not already have one
+            this.createOrActivateStage("main", "main", Mojo.Controller.StageType.card);
+        }
     },
 
     createOrActivateStage: function(stageName, sceneName, stageType) {
