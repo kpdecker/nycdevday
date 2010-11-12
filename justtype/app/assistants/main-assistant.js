@@ -1,4 +1,4 @@
-function MainAssistant(params) {
+function MainAssistant() {
     this.pushStatusSceneHandler = this.pushStatusScene.bindAsEventListener(this);
     this.pushOtherSceneHandler = this.pushOtherScene.bindAsEventListener(this);
 };
@@ -31,7 +31,7 @@ MainAssistant.prototype = {
         // If there are any scene above use (which we know do not handle this message since we are seeing it),
         // then pop them off the stack so we have ourselves and then the status scene after handling this message
         if (this.controller.stageController.topScene() !== this.controller) {
-            this.controller.stageController.popScenesTo("main");
+            this.controller.stageController.popScenesTo(this.controller.sceneName);
         }
 
         this.controller.stageController.pushScene("status", status);
