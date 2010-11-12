@@ -1,5 +1,4 @@
-function AppAssistant(appController) {
-};
+function AppAssistant(appController) {}
 
 AppAssistant.prototype = {
     handleLaunch: function(params){
