@@ -21,4 +21,17 @@ MainAssistant.prototype = {
     pushOtherScene: function() {
         this.controller.stageController.pushScene("other");
     },
+
+    populateStatus: function(status) {
+        // This is a point that we could cleanup any UIs that may conflict with this action.
+        // Examples: the navigation menu in the Facebook application
+
+        // If there are any scene above use (which we know do not handle this message since we are seeing it),
+        // then pop them off the stack so we have ourselves and then the status scene after handling this message
+        if (this.controller.stageController.topScene() !== this.controller) {
+            this.controller.stageController.popScenesTo("main");
+        }
+
+        this.controller.stageController.pushScene("status", status);
+    }
 };
