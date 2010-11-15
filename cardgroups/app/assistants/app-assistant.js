@@ -1,6 +1,9 @@
 function AppAssistant() {}
 
 AppAssistant.prototype = {
+    setup: function() {
+        StageManager.init();
+    },
     handleLaunch: function(params){
         Mojo.Log.info("handleLaunch: %j", params);
 
