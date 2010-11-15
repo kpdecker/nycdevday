@@ -16,7 +16,7 @@ AppAssistant.prototype = {
                     lightweight: true,
                 },
                 function(controller) {
-                    controller.pushScene("main", (Math.random()*1000)|0);
+                    controller.pushScene("main", RandomManager.newId());
                 },
                 Mojo.Controller.StageType.card);
         } else {
