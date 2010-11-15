@@ -1,5 +1,5 @@
 function MainAssistant(unique) {
-    this.unique = unique || (Math.random()*1000)|0;
+    this.unique = unique;
     this.pushSceneHandler = this.pushScene.bindAsEventListener(this);
 };
 
@@ -16,6 +16,6 @@ MainAssistant.prototype = {
     },
 
     pushScene: function() {
-        this.controller.stageController.pushScene("main");
+        this.controller.stageController.pushScene("main", (Math.random()*1000)|0);
     },
 };
