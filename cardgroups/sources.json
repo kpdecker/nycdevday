@@ -3,6 +3,7 @@
 
     {"source": "app/common/reference-count-cache.js"},
     {"source": "app/common/observable.js"},
+    {"source": "app/common/observer-manager.js"},
     {"source": "app/common/stage-manager.js"},
 
     {"source": "app/models/random.js"},

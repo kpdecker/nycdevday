@@ -11,6 +11,10 @@ MainAssistant.prototype = {
         this.random = RandomManager.get(this.randomId);
         this.renderData();
 
+        this.observerManager = new ObserverManager(this.controller);
+        this.observerManager.setup();
+        this.observerManager.observe(this.random, this.renderData.bind(this), ObserverManager.DeferUntil.SceneActive, true);
+
         this.controller.setupWidget("push-scene", {label: $L("Push New Scene")}, {});
         this.controller.listen("push-scene", Mojo.Event.tap, this.pushSceneHandler);
 
@@ -23,6 +27,8 @@ MainAssistant.prototype = {
     cleanup: function() {
         // Cleanup the entry reference to prevent a leak
         RandomManager.release(this.random);
+
+        this.observerManager.cleanup();
 
         this.controller.stopListening("push-scene", Mojo.Event.tap, this.pushSceneHandler);
         this.controller.stopListening("clone-scene", Mojo.Event.tap, this.cloneSceneHandler);
