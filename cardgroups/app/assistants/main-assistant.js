@@ -12,7 +12,7 @@ MainAssistant.prototype = {
         this.controller.setupWidget("push-scene", {label: $L("Push New Scene")}, {});
         this.controller.listen("push-scene", Mojo.Event.tap, this.pushSceneHandler);
 
-        this.controller.setupWidget("clone-scene", {label: $L("Clone Scene to Stage")}, {});
+        this.controller.setupWidget("clone-scene", {label: $L("Clone Scene to New Stage")}, {});
         this.controller.listen("clone-scene", Mojo.Event.tap, this.cloneSceneHandler);
     },
     cleanup: function() {
