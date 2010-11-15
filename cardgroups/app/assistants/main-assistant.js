@@ -3,6 +3,7 @@ function MainAssistant(id) {
 
     this.pushSceneHandler = this.pushScene.bindAsEventListener(this);
     this.cloneSceneHandler = this.cloneScene.bindAsEventListener(this);
+    this.newDataHandler = this.newData.bindAsEventListener(this);
 };
 
 MainAssistant.prototype = {
@@ -15,6 +16,9 @@ MainAssistant.prototype = {
 
         this.controller.setupWidget("clone-scene", {label: $L("Clone Scene to New Stage")}, {});
         this.controller.listen("clone-scene", Mojo.Event.tap, this.cloneSceneHandler);
+
+        this.controller.setupWidget("new-data", {label: $L("New Data")}, {});
+        this.controller.listen("new-data", Mojo.Event.tap, this.newDataHandler);
     },
     cleanup: function() {
         // Cleanup the entry reference to prevent a leak
@@ -22,6 +26,7 @@ MainAssistant.prototype = {
 
         this.controller.stopListening("push-scene", Mojo.Event.tap, this.pushSceneHandler);
         this.controller.stopListening("clone-scene", Mojo.Event.tap, this.cloneSceneHandler);
+        this.controller.stopListening("new-data", Mojo.Event.tap, this.newDataHandler);
     },
 
     renderData: function() {
@@ -34,5 +39,8 @@ MainAssistant.prototype = {
     },
     cloneScene: function() {
         StageManager.cloneSceneIntoNewStage(this.controller);
+    },
+    newData: function() {
+        this.random.newData();
     },
 };
