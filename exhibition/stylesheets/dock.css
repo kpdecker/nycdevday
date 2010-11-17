@@ -5,3 +5,8 @@ body {
 .dock-entry {
     position: relative;
 }
+
+/* Content: Stream */
+.dock-message {
+    padding-bottom: 15px;
+}
