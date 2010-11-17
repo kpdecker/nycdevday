@@ -26,6 +26,23 @@ body {
     color: #96979b;
 }
 
+.dock-content {
+    overflow: auto;
+    padding: 0px 30px;
+}
+
+.dock-comment-like {
+    text-align: center;
+    color: #707070;
+}
+.dock-likes {
+    display: inline-block;
+    margin-right: 10px;
+}
+.dock-comments {
+    display: inline-block;
+}
+
 .cover-image {
     float: left;
 
