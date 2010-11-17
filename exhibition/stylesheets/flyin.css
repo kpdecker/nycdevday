@@ -1,0 +1,13 @@
+/* Section animation */
+.flyin-element {
+    position: relative;
+    left: 100%;
+
+    -webkit-transition: left 150ms ease-in;
+}
+.flyin-element.visible {
+    left: 0%;
+}
+.flyin-element.flyout {
+    left: -100%;
+}
