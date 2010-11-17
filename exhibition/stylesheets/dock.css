@@ -10,3 +10,12 @@ body {
 .dock-message {
     padding-bottom: 15px;
 }
+
+/* Content: Image */
+.content-image-container {
+    text-align: center;
+}
+.content-image {
+    display: inline-block;
+    border-radius: 4px;
+}
