@@ -2,6 +2,7 @@
     {"source": "app/assistants/app-assistant.js"},
 
     {"source": "app/common/flyin-animation.js"},
+    {"source": "app/common/slideshow-timer.js"},
 
     {"source": "app/models/data-model.js", "scenes": "dock"},
 
