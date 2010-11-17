@@ -1,20 +1,20 @@
 function MainAssistant() {
-    this.pushDockStageHandler = this.pushDockStage.bindAsEventListener(this);
+    this.pushDockSceneHandler = this.pushDockScene.bindAsEventListener(this);
 };
 
 MainAssistant.prototype = {
     setup: function() {
-        this.controller.setupWidget("push-dock-stage", {label: $L("Push Dock Stage")}, {});
-        this.controller.listen("push-dock-stage", Mojo.Event.tap, this.pushDockStageHandler);
+        this.controller.setupWidget("push-dock-scene", {label: $L("Push Dock Scene")}, {});
+        this.controller.listen("push-dock-scene", Mojo.Event.tap, this.pushDockSceneHandler);
     },
     cleanup: function() {
-        this.controller.stopListening("push-dock-stage", Mojo.Event.tap, this.pushDockStageHandler);
+        this.controller.stopListening("push-dock-scene", Mojo.Event.tap, this.pushDockSceneHandler);
     },
 
-    pushDockStage: function() {
+    pushDockScene: function() {
         // Force the creation of a dock stage. This is meant for testing.
         // Under a normal application this should only be done in the handleLanch handler on the dockMode message
-        Mojo.Log.info("pushDockStage");
-        Mojo.Controller.getAppController().assistant.createOrActivateStage("dock", "dock", Mojo.Controller.StageType.dockMode);
+        Mojo.Log.info("pushDockScene");
+        this.controller.stageController.pushScene("dock");
     },
 };
