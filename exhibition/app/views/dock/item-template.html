@@ -1,0 +1,21 @@
+<div class="dock-entry">
+    <div class="dock-header">
+        <div class="flyin-element #{flyState}">
+            <div class="cover-container">
+                <div class="cover-cell">
+                    <div class="cover-position">
+                        <img class="cover-image" src="#{pic_square}" />
+                    </div>
+                </div>
+            </div>
+            <div class="dock-user truncating-text">#{name}</div>
+            <span class="post-time time-ago" x-mojo-loc="">Today</span>
+        </div>
+    </div>
+    <div class="dock-content flyin-element #{flyState}">#{-content}</div>
+
+    <div class="dock-comment-like flyin-element #{flyState}">
+        <span class="dock-likes" x-mojo-tap-highlight="momentary" x-mojo-loc="">X likes</span>
+        <span class="dock-comments" x-facebook-details-target="" x-mojo-tap-highlight="momentary" x-mojo-loc="">X comments</span>
+    </div>
+</div>
