@@ -6,6 +6,26 @@ body {
     position: relative;
 }
 
+.dock-header {
+    padding-top: 40px;
+    padding-left: 15px;
+    margin-bottom: 33px;
+
+    background-color: #39589c;
+    color: #dfe4ef;
+}
+
+.dock-user {
+    font-size: 32px;
+}
+.post-time {
+    position: absolute;
+    bottom: -30px;
+    right: 13px;
+
+    color: #96979b;
+}
+
 .cover-image {
     float: left;
 
