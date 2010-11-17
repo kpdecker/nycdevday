@@ -1,4 +1,9 @@
 function DockAssistant() {
+    this.mouseDownHandler = this.mouseDown.bindAsEventListener(this);
+    this.mouseUpHandler = this.mouseUp.bindAsEventListener(this);
+    this.dblClickHandler = this.dblclick.bindAsEventListener(this);
+    this.flickHandler = this.flick.bindAsEventListener(this);
+
     this.curIndex = -1;
 }
 
@@ -7,9 +12,35 @@ DockAssistant.prototype = {
         this.flyin = new FlyinAnimation(this.controller.sceneElement, "flyin-element");
         this.timer = new SlideshowTimer(this.controller, this.showNext.bind(this));
 
+        this.controller.listen(this.controller.sceneElement, "mousedown", this.mouseDownHandler);
+        this.controller.listen(this.controller.sceneElement, "mouseup", this.mouseUpHandler);
+        this.controller.listen(this.controller.sceneElement, "dblclick", this.dblClickHandler);
+        this.controller.listen(this.controller.sceneElement, Mojo.Event.flick, this.flickHandler);
+
         this.showNext();
     },
     cleanup: function() {
+        this.controller.stopListening(this.controller.sceneElement, "mousedown", this.mouseDownHandler);
+        this.controller.stopListening(this.controller.sceneElement, "mouseup", this.mouseUpHandler);
+        this.controller.stopListening(this.controller.sceneElement, "dblclick", this.dblClickHandler);
+        this.controller.stopListening(this.controller.sceneElement, Mojo.Event.flick, this.flickHandler);
+    },
+
+    mouseDown: function(event) {
+        this.timer.stop();
+    },
+    mouseUp: function(event) {
+        this.timer.start(false);
+    },
+    dblclick: function(event) {
+        this.timer.toggleDisabledFlag();
+    },
+    flick: function(event) {
+        if (event.velocity.x < 0) {
+            this.showNext();
+        } else {
+            this.showPrev();
+        }
     },
 
     showNext: function() {
