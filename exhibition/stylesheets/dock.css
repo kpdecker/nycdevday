@@ -1,0 +1,7 @@
+body {
+    background-color: #e5e7ec !important;   /* Lazy hammer */
+}
+
+.dock-entry {
+    position: relative;
+}
