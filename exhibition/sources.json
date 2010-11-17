@@ -1,6 +1,8 @@
 [
     {"source": "app/assistants/app-assistant.js"},
 
+    {"source": "app/common/flyin-animation.js"},
+
     {"source": "app/models/data-model.js", "scenes": "dock"},
 
     {"source": "app/assistants/main-assistant.js", "scenes": "main"},
