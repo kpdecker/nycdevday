@@ -13,3 +13,7 @@
 .flyin-element.flyout {
     left: -100%;
 }
+
+.flyin-element.snap-to {
+    -webkit-transition: none;
+}
