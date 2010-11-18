@@ -4,12 +4,23 @@ var SlideshowTimer;
 (function() {
 const SLIDE_DURATION = 5000;
 
+/**
+ * Utility class that manages the slideshow interval.
+ *
+ * @oaram contoller SceneController Scene controller that the slideshow is displayed in.
+ * @param next function Callback function that is executed when the slideshow interval elapses.
+ */
 SlideshowTimer = function(controller, next) {
     this.controller = controller;
     this.showNext = next;
 };
 
 SlideshowTimer.prototype = {
+    /**
+     * Begin waiting for the next interval.
+     *
+     * @param fullIter boolean Truthy to reset the total wait time counter and wait for a complete interval.
+     */
     start: function(fullIter) {
         // Short circuit autotransitions
         if (this.disableAutoTransition) {
@@ -36,6 +47,9 @@ SlideshowTimer.prototype = {
         this.timerStart = Date.now();
         Mojo.Log.info("Init dock timer: timeout: %d time: %d elapsed: %d", timeout, this.timerStart, this.timeElapsed);
     },
+    /**
+     * Stop the current interval execution.
+     */
     stop: function() {
         if (this.showEntryTimeout) {
             this.controller.window.clearTimeout(this.showEntryTimeout);
@@ -46,6 +60,9 @@ SlideshowTimer.prototype = {
             Mojo.Log.info("Stop dock timer: now: %d time: %d elapsed: %d", now, this.timerStart, this.timeElapsed);
         }
     },
+    /**
+     * Enable or disable the slideshow. When disabled the start function is ignored.
+     */
     toggleDisabledFlag: function() {
         this.disableAutoTransition = !this.disableAutoTransition;
         if (this.disableAutoTransition) {
