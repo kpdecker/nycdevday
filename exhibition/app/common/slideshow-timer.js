@@ -34,6 +34,7 @@ SlideshowTimer.prototype = {
                     self.showNext();
                 }, timeout);
         this.timerStart = Date.now();
+        Mojo.Log.info("Init dock timer: timeout: %d time: %d elapsed: %d", timeout, this.timerStart, this.timeElapsed);
     },
     stop: function() {
         if (this.showEntryTimeout) {
@@ -42,6 +43,7 @@ SlideshowTimer.prototype = {
 
             var now = Date.now();
             this.timeElapsed += now - this.timerStart;
+            Mojo.Log.info("Stop dock timer: now: %d time: %d elapsed: %d", now, this.timerStart, this.timeElapsed);
         }
     },
     toggleDisabledFlag: function() {
