@@ -1,3 +1,4 @@
+/* Copyright 2010 Palm, Inc. All rights reserved. */
 function DockAssistant() {
     this.mouseDownHandler = this.mouseDown.bindAsEventListener(this);
     this.mouseUpHandler = this.mouseUp.bindAsEventListener(this);

@@ -1,3 +1,4 @@
+/* Copyright 2010 Palm, Inc. All rights reserved. */
 var DataModel = [
     {
         name: "Facebook for webOS",

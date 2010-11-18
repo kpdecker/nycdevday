@@ -1,3 +1,4 @@
+/* Copyright 2010 Palm, Inc. All rights reserved. */
 function MainAssistant() {
     this.pushDockSceneHandler = this.pushDockScene.bindAsEventListener(this);
 };
