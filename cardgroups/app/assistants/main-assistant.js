@@ -1,3 +1,4 @@
+/* Copyright 2010 Palm, Inc. All rights reserved. */
 function MainAssistant(id) {
     this.randomId = id;
 

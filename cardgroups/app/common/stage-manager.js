@@ -1,3 +1,4 @@
+/* Copyright 2010 Palm, Inc. All rights reserved. */
 var StageManager;
 
 (function() {
@@ -36,8 +37,6 @@ var StageManager;
                 });
         },
     };
-
-    
 })();
 
 // We need to override one of the core scene generation logic to record the scene params
