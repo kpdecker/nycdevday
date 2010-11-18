@@ -6,22 +6,22 @@ This example demonstrates the Just Type API as well as an example delegation sys
 just type launches to the proper scene in the current scene stack.
 
 ### Key Components
- * appinfo.json : universalSearch entry
+ * *appinfo.json* : `universalSearch` entry
     Registers the app with the launcher indicating that it supports just type and what messages the app expects to
     receive when a just type action occurs for the app
 
- * AppAssistant.handleLaunch
+ * `AppAssistant.handleLaunch`
     App entry point. Creates the main stage if one does not exists and routes the just type message if this is a just
     type event.
 
- * AppAssistant.delegateToSupportingScene
-    Delegation logic. This is similar to the StageController.delegateToSceneAssistant logic except that it will delegate
+ * `AppAssistant.delegateToSupportingScene`
+    Delegation logic. This is similar to the `StageController.delegateToSceneAssistant` logic except that it will delegate
     to any supporting scene on the stack, not just the first scene.
 
- * MainAssistant.populateStatus
+ * `MainAssistant.populateStatus`
     "Routing only" delegate. Example of a delegate that just pushes the status scene after ensuring the proper stage state.
 
- * StatusAssistant.populateStatus
+ * `StatusAssistant.populateStatus`
     Example delegate that displays the just type message after ensuring the proper scene state. Note that in more complex
     applications this logic will also want to cleanup open controls as well as handle any other conditions that may cause
     an unexpected UI for the user.
@@ -33,21 +33,21 @@ just type launches to the proper scene in the current scene stack.
 This example demonstrates the new Exhibition API and some of the possible CSS3 animations that can be run while in exhibition mode.
 
 ### Key Components
- * appinfo.json : dockMode entry
+ * *appinfo.json* : `dockMode` entry
     Registers that app as supporting exhibition mode.
 
- * AppAssistant.handleLaunch
+ * `AppAssistant.handleLaunch`
     App entry point. Creates the dock mode stage when requested, using the dockMode flag to determine when this occurs.
 
- * FlyinAnimation
+ * `FlyinAnimation`
     Utility class that handles the javascript portion of the flyin and flyout animations that are used in this example.
- * flyin.css
+ * *flyin.css*
     CSS side of the flyin and flyout animations.
 
- * SlideshowTimer
+ * `SlideshowTimer`
     Utility class that handles the refresh interval for the slideshow.
 
- * DockAssistant
+ * `DockAssistant`
     Primary dock scene implementation
 
 ### Notes
