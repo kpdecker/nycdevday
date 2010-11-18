@@ -1,3 +1,4 @@
+/* Copyright 2010 Palm, Inc. All rights reserved. */
 function AppAssistant(appController) {}
 
 AppAssistant.prototype = {
