@@ -54,6 +54,7 @@ This example demonstrates the new Exhibition API and some of the possible CSS3 a
  * The APIs used in this example are subject to change. The finalized SDK docs should be consulted when released to confirm that there have not been changes to these APIs.
  * Enable/disable commands (novaterm)
   * Start Dock Mode
-    $ luna-send -n 1 palm://com.palm.display/control/setState "{'state': 'dock'}"
+    > $ luna-send -n 1 palm://com.palm.display/control/setState "{'state': 'dock'}"
+
   * Stop Dock Mode
-    $ luna-send -n 1 palm://com.palm.display/control/setState "{'state': 'undock'}"
+    > $ luna-send -n 1 palm://com.palm.display/control/setState "{'state': 'undock'}"
