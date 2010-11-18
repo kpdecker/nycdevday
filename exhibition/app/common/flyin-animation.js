@@ -123,7 +123,10 @@ function flyElement(anim, className, query, complete) {
             complete();
         }
     };
+
+    // Use the webKitTransitionEnd event to deermine when the transaction has completed successfully.
     el.addEventListener("webkitTransitionEnd", transitionEnd, true);
+
     if (!el.hasClassName(className)) {
         el.addClassName(className);
     } else {
