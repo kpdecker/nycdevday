@@ -28,3 +28,32 @@ just type launches to the proper scene in the current scene stack.
 
 ### Notes
  * When developing a just type application it is much easier to not remove the application after each code change. If the application is removed it will have to be re-registered with the Just Type infrastructure after each install.
+
+## Exhibition
+This example demonstrates the new Exhibition API and some of the possible CSS3 animations that can be run while in exhibition mode.
+
+### Key Components
+ * appinfo.json : dockMode entry
+    Registers that app as supporting exhibition mode.
+
+ * AppAssistant.handleLaunch
+    App entry point. Creates the dock mode stage when requested, using the dockMode flag to determine when this occurs.
+
+ * FlyinAnimation
+    Utility class that handles the javascript portion of the flyin and flyout animations that are used in this example.
+ * flyin.css
+    CSS side of the flyin and flyout animations.
+
+ * SlideshowTimer
+    Utility class that handles the refresh interval for the slideshow.
+
+ * DockAssistant
+    Primary dock scene implementation
+
+### Notes
+ * The APIs used in this example are subject to change. The finalized SDK docs should be consulted when released to confirm that there have not been changes to these APIs.
+ * Enable/disable commands (novaterm)
+  * Start Dock Mode
+    $ luna-send -n 1 palm://com.palm.display/control/setState "{'state': 'dock'}"
+  * Stop Dock Mode
+    $ luna-send -n 1 palm://com.palm.display/control/setState "{'state': 'undock'}"
