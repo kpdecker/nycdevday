@@ -27,6 +27,9 @@ DockAssistant.prototype = {
         this.controller.stopListening(this.controller.sceneElement, Mojo.Event.flick, this.flickHandler);
     },
 
+    /*-----------------------*
+     * User Event Handlers
+     *-----------------------*/
     mouseDown: function(event) {
         this.timer.stop();
     },
@@ -44,6 +47,9 @@ DockAssistant.prototype = {
         }
     },
 
+    /*-----------------------*
+     * Slideshow Movement
+     *-----------------------*/
     showNext: function() {
         this.curIndex++;
         this.loadItem(false);
@@ -57,6 +63,9 @@ DockAssistant.prototype = {
         this.loadItem(true);
     },
 
+    /*-----------------------*
+     * Item Load and Render
+     *-----------------------*/
     loadItem: function(reverse) {
         var entry = DataModel[this.curIndex];
         if (entry) {
@@ -101,6 +110,7 @@ DockAssistant.prototype = {
         // Clear out anything that may be running already
         this.timer.stop();
 
+        // Begin the animation
         this.flyin.flyOut(reverse, flyoutComplete);
     },
     renderEntry: function(result, flyState) {
