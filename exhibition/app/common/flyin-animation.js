@@ -1,7 +1,49 @@
 /* Copyright 2010 Palm, Inc. All rights reserved. */
+/*globals Element:false */
 var FlyinAnimation;
 
 (function() {
+
+/*-------------------------------*
+ * Worker methods
+ *-------------------------------*/
+function getClassQuery(className, negate) {
+    return negate ? (":not(." + className + ")") : ("." + className);
+}
+function getClassNameApply(remove) {
+    return remove ? Element.removeClassName : Element.addClassName;
+}
+
+function flyElement(anim, className, query, complete) {
+    var el = anim.el.querySelector(query);
+    if (!el) {
+        complete();
+        return;
+    }
+
+    function transitionEnd() {
+        anim.cleanupFly(true);
+
+        flyElement(anim, className, query, complete);
+    }
+    anim.cleanupFly = function(notComplete) {
+        el.removeEventListener("webkitTransitionEnd", transitionEnd, true);
+        anim.cleanupFly = undefined;
+
+        if (!notComplete) {
+            complete();
+        }
+    };
+
+    // Use the webKitTransitionEnd event to deermine when the transaction has completed successfully.
+    el.addEventListener("webkitTransitionEnd", transitionEnd, true);
+
+    if (!el.hasClassName(className)) {
+        el.addClassName(className);
+    } else {
+        el.removeClassName(className);
+    }
+}
 
 /**
  * Helper class that implements a flyin and flyout effect for all elements that have the elementClassName defined.
@@ -92,46 +134,5 @@ FlyinAnimation.prototype = {
         }
     },
 };
-
-/*-------------------------------*
- * Worker methods
- *-------------------------------*/
-function getClassQuery(className, negate) {
-    return negate ? (":not(." + className + ")") : ("." + className);
-}
-function getClassNameApply(remove) {
-    return remove ? Element.removeClassName : Element.addClassName;
-}
-
-function flyElement(anim, className, query, complete) {
-    var el = anim.el.querySelector(query);
-    if (!el) {
-        complete();
-        return;
-    }
-
-    function transitionEnd() {
-        anim.cleanupFly(true);
-
-        flyElement(anim, className, query, complete);
-    }
-    anim.cleanupFly = function(notComplete) {
-        el.removeEventListener("webkitTransitionEnd", transitionEnd, true);
-        anim.cleanupFly = undefined;
-
-        if (!notComplete) {
-            complete();
-        }
-    };
-
-    // Use the webKitTransitionEnd event to deermine when the transaction has completed successfully.
-    el.addEventListener("webkitTransitionEnd", transitionEnd, true);
-
-    if (!el.hasClassName(className)) {
-        el.addClassName(className);
-    } else {
-        el.removeClassName(className);
-    }
-}
 
 })();

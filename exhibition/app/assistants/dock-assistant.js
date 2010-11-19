@@ -1,4 +1,5 @@
 /* Copyright 2010 Palm, Inc. All rights reserved. */
+/*globals Mojo:false, FlyinAnimation:false, SlideshowTimer:false, DataModel: false */
 function DockAssistant() {
     this.mouseDownHandler = this.mouseDown.bindAsEventListener(this);
     this.mouseUpHandler = this.mouseUp.bindAsEventListener(this);
@@ -90,6 +91,10 @@ DockAssistant.prototype = {
 
     showEntry: function(reverse, result) {
         var self = this;
+        function flyinComplete() {
+            // Setup the next iteration
+            self.timer.start(true);
+        }
         function flyoutComplete() {
             // Reset the scroller to the top
             var scroller = Mojo.View.getScrollerForElement(self.controller.sceneElement);
@@ -101,10 +106,6 @@ DockAssistant.prototype = {
             self.renderEntry(result, self.flyin.getState(reverse ? self.flyin.LEFT : self.flyin.RIGHT));
 
             self.flyin.flyIn(!reverse, flyinComplete);
-        }
-        function flyinComplete() {
-            // Setup the next iteration
-            self.timer.start(true);
         }
 
         // Clear out anything that may be running already

@@ -1,7 +1,8 @@
 /* Copyright 2010 Palm, Inc. All rights reserved. */
+/*globals Mojo:false, $L:false */
 function MainAssistant() {
     this.pushDockSceneHandler = this.pushDockScene.bindAsEventListener(this);
-};
+}
 
 MainAssistant.prototype = {
     setup: function() {

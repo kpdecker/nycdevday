@@ -1,4 +1,5 @@
 /* Copyright 2010 Palm, Inc. All rights reserved. */
+/*globals Mojo:false */
 var SlideshowTimer;
 
 (function() {
