@@ -13,6 +13,31 @@ var StageManager;
             return "facebookStage-"+(stageCounter++);
         },
 
+        stageControllerFromEvent: function(stageController, event) {
+            if (event.originalEvent) {
+                // listTap Event
+                event = event.originalEvent;
+            }
+            if (event.up) {
+                // tap Event
+                event = event.up;
+            }
+            if (!event.metaKey && !event.altKey) {
+                return stageController;
+            }
+        },
+
+        pushOrCreateScene: function(stageController, sceneName) {
+            var args = Array.prototype.slice.call(arguments, 1);
+            if (!stageController) {
+                StageManager.createStage(
+                        function(controller) {
+                            controller.pushScene.apply(controller, args);
+                        });
+            } else {
+                stageController.pushScene.apply(stageController, args);
+            }
+        },
         createStage: function(onInit) {
             Mojo.Log.info("StageManager.createStage");
             var name = StageManager.getStageName();
