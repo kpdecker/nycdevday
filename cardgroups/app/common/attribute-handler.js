@@ -1,4 +1,5 @@
 /* Copyright 2010 Palm, Inc. All rights reserved. */
+/*globals Mojo:false, $L:false, ObserverManager:false, StageManager:false */
 var AttributeHandler;
 
 // Scope block
@@ -29,7 +30,7 @@ function getAncestorWithAttrs(targetElement, attrs) {
     if (targetElement && loadAttrs(targetElement)) {
         return targetElement;
     }
-};
+}
 
 AttributeHandler = {
     /**

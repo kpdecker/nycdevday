@@ -1,4 +1,5 @@
 /* Copyright 2010 Palm, Inc. All rights reserved. */
+/*globals Mojo:false, $L:false, ObserverManager:false, StageManager:false, AttributeHandler:false, RandomManager:false */
 function MainAssistant(id) {
     this.randomId = id;
 

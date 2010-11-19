@@ -1,4 +1,6 @@
 /* Copyright 2009 Palm, Inc.  All rights reserved. */
+/*globals Mojo:false */
+
 function Observable() {
     this.observers = [];
 }
