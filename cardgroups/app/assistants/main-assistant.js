@@ -5,6 +5,7 @@ function MainAssistant(id) {
     this.pushSceneHandler = this.pushScene.bindAsEventListener(this);
     this.cloneSceneHandler = this.cloneScene.bindAsEventListener(this);
     this.newDataHandler = this.newData.bindAsEventListener(this);
+    this.attributeTapHandler = this.attributeTap.bindAsEventListener(this);
 };
 
 MainAssistant.prototype = {
@@ -12,6 +13,7 @@ MainAssistant.prototype = {
         this.random = RandomManager.get(this.randomId);
         this.renderData();
 
+        // Setup the observer for backing data model updates.
         this.observerManager = new ObserverManager(this.controller);
         this.observerManager.setup();
         this.observerManager.observe(this.random, this.renderData.bind(this), ObserverManager.DeferUntil.SceneActive, true);
@@ -24,6 +26,9 @@ MainAssistant.prototype = {
 
         this.controller.setupWidget("new-data", {label: $L("New Data")}, {});
         this.controller.listen("new-data", Mojo.Event.tap, this.newDataHandler);
+
+        // Register the tap handler for the attribute handler
+        this.controller.listen(this.controller.sceneElement, Mojo.Event.tap, this.attributeTapHandler);
     },
     cleanup: function() {
         // Cleanup the entry reference to prevent a leak
@@ -50,4 +55,12 @@ MainAssistant.prototype = {
     newData: function() {
         this.random.newData();
     },
+    attributeTap: function(event) {
+        // Tap vs. Mod+Tap determination. Stage controller will either be undefined if we need to create
+        // a new stage or the current stage if we will just push to this stage.
+        var stageController = StageManager.stageControllerFromEvent(this.controller.stageController, event);
+
+        // Perform any attribute actions if necessary
+        AttributeHandler.handleAttrItemTap(stageController, event);
+    }
 };
