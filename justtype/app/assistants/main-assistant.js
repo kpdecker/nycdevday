@@ -1,8 +1,9 @@
 /* Copyright 2010 Palm, Inc. All rights reserved. */
+/*globals Mojo:false, $L:false */
 function MainAssistant() {
     this.pushStatusSceneHandler = this.pushStatusScene.bindAsEventListener(this);
     this.pushOtherSceneHandler = this.pushOtherScene.bindAsEventListener(this);
-};
+}
 
 MainAssistant.prototype = {
     setup: function() {

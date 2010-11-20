@@ -1,4 +1,5 @@
 /* Copyright 2010 Palm, Inc. All rights reserved. */
+/*globals Mojo:false, $L:false */
 function StatusAssistant(params) {
     this.pushOtherSceneHandler = this.pushOtherScene.bindAsEventListener(this);
 
