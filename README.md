@@ -1,6 +1,30 @@
 # webOS 2.0 Feature Examples
 Examples from the content covered in the webOS 2.0 feature summary at the NYC webOS Developer Day 2010.
 
+## Card Groups
+This example demonstrates the UI techniques that can be used to allow the user to create multiple stages on demand.
+
+ * Scene cloning
+ * Mod+Tap to open in new scene
+ * Scene data sharing
+
+### Key Components
+ * `ReferenceCountCache`
+    Base class used to maintain objects via a reference counter. This wrapped in a manager/factory interface such as the `RandomManager` class allows for instances of data model objects to be shared between multiple scenes (Or other components)
+ * `StageManager.stageControllerFromEvent`
+    Utility method that determines of a Mod+Tap event has occurred.
+ * `StageManager.cloneSceneIntoNewStage`
+    Scene cloning API. Recreates the current scene in a new stage by creating a stage and then pushing a new scene with the same name
+    and arguments that were passed to the initialization of this scene.
+ * `AttributeHandler`
+    Example attribute-based action handler.
+ * `MainAssistant.attributeTap`
+    Attribute and Mod+Tap example.
+
+### Notes
+ * The scene clone logic overrides some private framework methods. Anyone who uses this code carefully investigate this functionality on any future webOS releases as this implementation could change at any time.
+   * The same effect can be achieved my storing the scene name and scene arguments in the field named `_sceneCloneArgs` on the scene controller. In this situation each scene that wishes to support cloning will need to store this value in their constructor.
+
 ## Just Type
 This example demonstrates the Just Type API as well as an example delegation system for routing the 
 just type launches to the proper scene in the current scene stack.
